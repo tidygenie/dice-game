@@ -31,13 +31,6 @@ public class Player {
         this.score = score;
     }
 
-    public void rollDice() {
-        die.roll();
-    }
-
-    public int getDieValue() {
-        return die.getValue();
-    }
 
     public void increaseScore() {
         score++;
