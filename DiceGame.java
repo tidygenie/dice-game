@@ -30,6 +30,20 @@ public class DiceGame {
             while (roundsPlayed <= numberOfRounds) {
                 System.out.println("\nRound: " + roundsPlayed + "Player score: " + player.getScore());
                 System.out.println("\nGuess a number between 1 and " + numberOfSides);
+
+                int guess = scanner.nextInt();
+                player.rollDice();
+                int diceValue = player.getDieValue();
+                System.out.println("The dice landed on: " + diceValue);
+
+                if (guess == diceValue){
+
+                    System.out.println("Correct!");
+                    player.increaseScore();
+
+                } else {
+                    System.out.println("Incorrect!");
+                }
             }
             
         }
@@ -83,6 +97,7 @@ public class DiceGame {
         
     }
     
+    // En metod för att läsa användarens namn.
     
 
     
