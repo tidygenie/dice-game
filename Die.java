@@ -11,25 +11,25 @@ public class Die {
     }
 
     /**
-     * Hämtar tärnignens nuvarandra värde.
+     * Collects the current value of the die.
      * 
-     * @return tärnignens nuvarandra värde.
+     * @return the current value of the die.
      */
     public int getCurrentValue() {
         return currentValue;
     }
 
     /**
-     * Hämtar tärningens antal sidor.
+     * Collects the number of sides of the die.
      * 
-     * @return tärningens antal sidor.
+     * @return the number of sides of the die.
      */
-    public int getNumberOfSlides() {
+    public int getNumberOfSides() {
         return numberOfSides;
     }
 
     /**
-     * Rullar tärningen och väljer ett nytt värde mellan 1 och antal sidor.
+     * Sets a new value for currentValue between 1 and the number of sides via rolling the die.
      */
     public void rollDie() {
         currentValue = random.nextInt(numberOfSides) + 1;
