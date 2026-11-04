@@ -47,7 +47,10 @@ public class DiceGame {
 
     /**
      * Reads an integer within a range and asks again in the event of an error.
-     * @param 
+     * @param prompt the text to be displayed before the input.
+     * @param minimum the minimum allowed value.
+    * @param maximum the maximum allowed value.
+    * @return the player's valid integer.
      */
     private int readIntInRange(String prompt, int minimum, int maximum){
       while (true) {
@@ -63,9 +66,7 @@ public class DiceGame {
         }catch(NumberFormatException e){
             // Loopen frågar igen om inmatnignen inte är heltal/korekt 
         }
-            
             System.out.println("Ogiltiga inmatning. Ange ett heltal mellan " + minimum + " och " + maximum + ".");
-      
       }  
     }
 
