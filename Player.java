@@ -1,8 +1,8 @@
 public class Player {
 
-    public String name;
-    public int score;
-    public Die die;
+    private final String name;
+    private int score;
+    private Die die;
 
     public Player(String name) {
         this.name = name;
@@ -10,37 +10,41 @@ public class Player {
         this.die = new Die(6);
     }
 
-    public String getName(){
+    /**
+     * Get the player name.
+     */
+    public String getName() {
         return name;
     }
 
+    /**
+     * Get the score for the player.
+     */
     public int getScore() {
         return score;
     }
 
-    public void setScore(int score){
+    /**
+     * Set the score for the player.
+     */
+    public void setScore(int score) {
         this.score = score;
     }
 
-
-    public void rollDice(){
+    public void rollDice() {
         die.roll();
     }
 
-
-    public int getDieValue(){
+    public int getDieValue() {
         return die.getValue();
     }
 
-
-    public void increaseScore(){
-        score ++;
+    public void increaseScore() {
+        score++;
     }
 
-
-    public void addDie(int numberOfSides){
+    public void addDie(int numberOfSides) {
         die = new Die(numberOfSides);
     }
-    
 
 }
