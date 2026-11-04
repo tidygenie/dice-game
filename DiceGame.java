@@ -12,7 +12,7 @@ public class DiceGame {
 
         while(playAgain){
 
-            System.out.println("Enter your name:")
+            System.out.println("Enter your name:");
             String name = scanner.nextLine();
             Player player = new Player(name);
 
@@ -32,8 +32,8 @@ public class DiceGame {
                 System.out.println("\nGuess a number between 1 and " + numberOfSides);
 
                 int guess = scanner.nextInt();
-                player.rollDice();
-                int diceValue = player.getDieValue();
+                die.rollDie();
+                int diceValue = die.getCurrentValue();
                 System.out.println("The dice landed on: " + diceValue);
 
                 if (guess == diceValue){
@@ -48,8 +48,7 @@ public class DiceGame {
             
         }
 
-        player.rollDice();
-        player.increaseScore();
+
 
        int numberOfRounds =  readIntInRange("How many rounds do you want to play?", 1, Integer.MAX_VALUE);
        int numberOfSides =  readIntInRange("How many sides should the die have?", 1, Integer.MAX_VALUE);
