@@ -7,7 +7,6 @@ public class Player {
     public Player(String name) {
         this.name = name;
         this.score = 0;
-        this.die = new Die(6);
     }
 
     /**
@@ -29,14 +28,6 @@ public class Player {
      */
     public void setScore(int score) {
         this.score = score;
-    }
-
-    public void rollDice() {
-        die.roll();
-    }
-
-    public int getDieValue() {
-        return die.getValue();
     }
 
     public void increaseScore() {
