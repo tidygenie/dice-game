@@ -7,7 +7,6 @@ public class DiceGame {
         DiceGame diceGame = new DiceGame();
 
         System.out.println("Hello, welcome to dice game!");
-        // boolean playAgain = true;
 
         while (true) {
 
