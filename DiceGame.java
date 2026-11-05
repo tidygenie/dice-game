@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.Random;
-import 
+
 
 public class DiceGame {
     // private static final Scanner scanner;
@@ -8,6 +8,7 @@ public class DiceGame {
     
     public static void main(String[] args){
 
+        Die die = new Die();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, welcome to dice game!");
         boolean playAgain = true;

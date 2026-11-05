@@ -7,7 +7,7 @@ public class Player {
     public Player(String name) {
         this.name = name;
         this.score = 0;
-        this.die = new Die(6);
+        this.die = new Die(die.numberOfSides());
     }
 
     /**
