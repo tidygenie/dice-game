@@ -22,12 +22,17 @@ public class DiceGame {
             Player player = new Player(playerName);
             Die die = new Die(numberOfSides);
             
-            
-
             int roundsPlayed = 1;
 
-            
             GameStart.playRound(diceGame.scanner, player, roundsPlayed, die.getDie(), numberOfRounds);
+
+            System.out.println("\nGame over! Your final score is: " + player.getScore() + " out of " + numberOfRounds + " rounds.");
+            System.out.print("Do you want to play again? (yes/no): ");
+            String playAgainInput = diceGame.scanner.next().trim().toLowerCase();   
+            if (!playAgainInput.equals("yes")) {
+                System.out.println("Thank you for playing! Goodbye!");
+                break;
+            }
            
         }
 

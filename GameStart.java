@@ -25,4 +25,17 @@ public class GameStart {
 
     }
 
+ public static void endRound(){
+    System.out.println("\nGame over! Your final score is: " + player.getScore() + " out of " + numberOfRounds + " rounds.");
+            System.out.print("Do you want to play again? (yes/no): ");
+            String playAgainInput = diceGame.scanner.next().trim().toLowerCase();   
+            if (!playAgainInput.equals("yes")) {
+                System.out.println("Thank you for playing! Goodbye!");
+                break;
+            }
+ }
+
+
+
+
 }

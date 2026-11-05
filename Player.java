@@ -2,7 +2,7 @@ public class Player {
 
     private final String name;
     private int score;
-    private Die die;
+    private  Die die;
 
     public Player(String name) {
         this.name = name;
@@ -34,8 +34,7 @@ public class Player {
         score++;
     }
 
-    public void addDie(int numberOfSides) {
+     public void addDie(int numberOfSides) {
         die = new Die(numberOfSides);
     }
-
 }
