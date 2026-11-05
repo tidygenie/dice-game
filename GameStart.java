@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class GameStart {
+    PlayerInput input = new PlayerInput();
 
     public static void playRound(Scanner scanner, Player player, int roundsPlayed, Die die, int numberOfRounds) {
 
@@ -25,13 +26,13 @@ public class GameStart {
 
     }
 
- public static void endRound(){
+ public static void endRound(Player player, int roundsPlayed, Die die, int numberOfRounds, PlayerInput input) {
+    
     System.out.println("\nGame over! Your final score is: " + player.getScore() + " out of " + numberOfRounds + " rounds.");
             System.out.print("Do you want to play again? (yes/no): ");
-            String playAgainInput = diceGame.scanner.next().trim().toLowerCase();   
-            if (!playAgainInput.equals("yes")) {
+            String playAgainInput = input.readString().trim().toLowerCase();
+            if (!playAgainInput.equals("yes") && !playAgainInput.equals("y")) {
                 System.out.println("Thank you for playing! Goodbye!");
-                break;
             }
  }
 
