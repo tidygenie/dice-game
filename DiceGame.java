@@ -1,7 +1,5 @@
-import java.util.Scanner;
-
 public class DiceGame {
-    private final Scanner scanner = new Scanner(System.in);
+    private final PlayerInput playerInput = new PlayerInput();
 
     public static void main(String[] args) {
         DiceGame diceGame = new DiceGame();
@@ -19,16 +17,17 @@ public class DiceGame {
 
             // Create dice
             player.addDie(numberOfSides);
+            Die die = player.getDie();
+
+            System.out.println("Hi " + playerName + "! You will play " + numberOfRounds
+                    + " rounds with a " + numberOfSides + "-sided die.");
 
             int roundsPlayed = 1;
 
             while (roundsPlayed <= numberOfRounds) {
-                System.out.println("\nRound: " + roundsPlayed + "Player score: " + player.getScore());
-                System.out.println("\nGuess a number between 1 and " + numberOfSides);
-
-                int guess = diceGame.scanner.nextInt();
-
-                Die die = new Die(numberOfSides);
+                System.out.println("\nRound: " + roundsPlayed + " Player score: " + player.getScore());
+                int guess = diceGame.readIntInRange(
+                        "Guess a number between 1 and " + numberOfSides + ": ", 1, numberOfSides);
 
                 die.rollDie();
 
@@ -43,6 +42,7 @@ public class DiceGame {
                 } else {
                     System.out.println("Incorrect!");
                 }
+                roundsPlayed++;
             }
         }
     }
@@ -59,8 +59,7 @@ public class DiceGame {
         while (true) {
 
             System.out.print(prompt);
-
-            String input = scanner.next();
+            String input = playerInput.readString();
 
             try {
                 int value = Integer.parseInt(input);
@@ -82,10 +81,11 @@ public class DiceGame {
     private String readName() {
         while (true) {
             System.out.print("What is your name? ");
-            String name = scanner.next();
+            String name = playerInput.readString();
 
             if (name.isEmpty()) {
                 System.out.println("The name cannot be empty.");
+                continue;
             }
 
             return name;
