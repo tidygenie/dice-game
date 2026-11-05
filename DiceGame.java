@@ -1,12 +1,14 @@
 import java.util.Scanner;
 import java.util.Random;
+import 
 
 public class DiceGame {
-    private final Scanner scanner;
+    // private static final Scanner scanner;
     
     
     public static void main(String[] args){
-        
+
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, welcome to dice game!");
         boolean playAgain = true;
 
@@ -65,7 +67,7 @@ public class DiceGame {
     * @param maximum the maximum allowed value.
     * @return the player's valid integer.
      */
-    private int readIntInRange(String prompt, int minimum, int maximum){
+    private static int readIntInRange(String prompt, int minimum, int maximum){
       while (true) {
         
         System.out.print(prompt);
