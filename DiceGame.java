@@ -92,13 +92,13 @@ public class DiceGame {
     private String readName() {
         while (true) {
             System.out.print("What is your name? ");
-            String name = scanner.nextLine().trim();
+            String name = scanner.next();
 
-            if (!name.isEmpty()) {
-                return name;
+            if (name.isEmpty()) {
+                System.out.println("The name cannot be empty.");
             }
 
-            System.out.println("The name cannot be empty.");
+            return name;
         }
     }
 
