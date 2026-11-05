@@ -26,28 +26,9 @@ public class DiceGame {
 
             int roundsPlayed = 1;
 
-            while (roundsPlayed <= numberOfRounds) {
-                System.out.println("\nRound: " + roundsPlayed + "Player score: " + player.getScore());
-                System.out.println("\nGuess a number between 1 and " + numberOfSides);
-
-                int guess = diceGame.scanner.nextInt();
-
-                Die die = new Die(numberOfSides);
-
-                die.rollDie();
-
-                int diceValue = die.getCurrentValue();
-                System.out.println("The dice landed on: " + diceValue);
-
-                if (guess == diceValue) {
-
-                    System.out.println("Correct!");
-                    player.increaseScore();
-
-                } else {
-                    System.out.println("Incorrect!");
-                }
-            }
+            
+            GameStart.playRound(diceGame.scanner, player, roundsPlayed, Die.die, numberOfRounds);
+           
         }
 
         // int numberOfRounds = readIntInRange("How many rounds do you want to play?",
