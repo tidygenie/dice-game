@@ -20,14 +20,14 @@ public class DiceGame {
             // Läser användarens namn
             var playerName = diceGame.readName();
             Player player = new Player(playerName);
-
-            // Create dice
-            player.addDie(numberOfSides);
+            Die die = new Die(numberOfSides);
+            
+            
 
             int roundsPlayed = 1;
 
             
-            GameStart.playRound(diceGame.scanner, player, roundsPlayed, Die.die, numberOfRounds);
+            GameStart.playRound(diceGame.scanner, player, roundsPlayed, die.getDie(), numberOfRounds);
            
         }
 
