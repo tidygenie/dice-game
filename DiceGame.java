@@ -1,14 +1,11 @@
 import java.util.Scanner;
 
 public class DiceGame {
-    // private final Scanner scanner;
     private final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         DiceGame diceGame = new DiceGame();
 
-        // // Die die = new Die();
-        // Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, welcome to dice game!");
         // boolean playAgain = true;
 
@@ -49,12 +46,6 @@ public class DiceGame {
                 }
             }
         }
-
-        // int numberOfRounds = readIntInRange("How many rounds do you want to play?",
-        // 1, Integer.MAX_VALUE);
-        // int numberOfSides = readIntInRange("How many sides should the die have?", 1,
-        // Integer.MAX_VALUE);
-
     }
 
     /**
@@ -101,23 +92,4 @@ public class DiceGame {
             return name;
         }
     }
-
-    // public void placeYourGuess(String prompt) { // Osäker på hur jag får in de
-    // bestämda antal sidorna i metoden. :-)
-    // System.out.print(prompt);
-    // int guess = scanner.nextInt();
-
-    // if (guess == die.getValue()) {
-    // System.out.println("Congratulations! You guessed the correct number!");
-    // System.out.println("Your score is: " + player.getScore() + " and you have "
-    // + (numberOfRounds - roundsPlayed) + " rounds left.");
-    // } else {
-    // System.out.println("Sorry, your guess was incorrect. The correct number was:
-    // " + die.getValue());
-    // }
-
-    // }
-
-    // En metod för att läsa användarens namn.
-
 }
