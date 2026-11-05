@@ -1,6 +1,6 @@
 import java.util.Scanner;
-public class GameStart {
 
+public class GameStart {
 
     public static void playRound(Scanner scanner, Player player, int roundsPlayed, Die die, int numberOfRounds) {
 
@@ -22,7 +22,6 @@ public class GameStart {
             roundsPlayed++;
         }
 
-        
     }
 
 }
