@@ -9,7 +9,7 @@ public class GameStart {
             int guess = input.readIntInRange("Guess a number between 1 and " + die.getNumberOfSides() + ": ", 1,
                     die.getNumberOfSides());
 
-            die.rollDie();
+            die.roll();
 
             int diceValue = die.getCurrentValue();
             System.out.println("\nThe dice landed on: " + diceValue);
