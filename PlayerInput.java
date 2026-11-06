@@ -1,24 +1,68 @@
 import java.util.Scanner;
 
 public class PlayerInput {
-    
+
     private final Scanner scanner = new Scanner(System.in);
 
     /**
-     * Collects a string input from the user.
-     * 
-    * @return the user's input.
+     * Reads one whole line of text from the user.
+     *
+     * @return the text the user entered.
      */
-    public String readString() {
-        return scanner.nextLine();
+    public String readLine() {
+        return scanner.nextLine().trim().toLowerCase();
     }
 
     /**
-     * Collects a integer input from the user.
-     * @return the user's integer input.
+     * Reads a line of text and converts it to an integer.
+     *
+     * @return the integer the user entered.
      */
     public int readInt() {
-        return Integer.parseInt(scanner.nextLine());
+        return Integer.parseInt(readLine());
     }
 
+    /**
+     * Keeps asking until the user enters an integer within the given range.
+     *
+     * @param prompt  the message to show before reading input.
+     * @param minimum the smallest allowed value.
+     * @param maximum the largest allowed value.
+     * @return the integer entered by the user.
+     */
+    public int readIntInRange(String prompt, int minimum, int maximum) {
+        while (true) {
+            System.out.print(prompt);
+
+            try {
+                int value = readInt();
+                if (value >= minimum && value <= maximum) {
+                    return value;
+                }
+            } catch (NumberFormatException e) {
+                // Ask again when the input is not an integer.
+            }
+
+            System.out.println("\nInvalid input. Enter an integer between " + minimum + " and " + maximum + ".");
+        }
+    }
+
+    /**
+     * Keeps asking until the user enters a non empty name.
+     *
+     * @param prompt the message to show before reading the name.
+     * @return the name entered by the user.
+     */
+    public String readName(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String name = readLine();
+
+            if (!name.isEmpty()) {
+                return name;
+            }
+
+            System.out.println("The name cannot be empty.");
+        }
+    }
 }

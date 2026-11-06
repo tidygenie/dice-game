@@ -30,7 +30,7 @@ public class Player {
         this.score = score;
     }
 
-    public void inreaseScore() {
+    public void increaseScore() {
         score++;
     }
 
