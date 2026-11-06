@@ -24,6 +24,15 @@ public class Player {
     }
 
     /**
+     * Get the current value of die.
+     * 
+     * @return current value of the die.
+     */
+    public int getDieValue() {
+        return die.getCurrentValue();
+    }
+
+    /**
      * Set the score for the player.
      */
     public void setScore(int score) {
