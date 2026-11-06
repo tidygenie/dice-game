@@ -2,7 +2,7 @@ public class Player {
 
     private final String name;
     private int score;
-    private  Die die;
+    private Die die;
 
     public Player(String name) {
         this.name = name;
@@ -30,11 +30,16 @@ public class Player {
         this.score = score;
     }
 
-    public void increaseScore() {
+    public void inreaseScore() {
         score++;
     }
 
-     public void addDie(int numberOfSides) {
+    public void addDie(int numberOfSides) {
         die = new Die(numberOfSides);
     }
+
+    public void roll() {
+        die.rollDie();
+    }
+
 }
