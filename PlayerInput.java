@@ -58,11 +58,42 @@ public class PlayerInput {
             System.out.print(prompt);
             String name = readLine();
 
-            if (!name.isEmpty()) {
+            if (name.matches("(?=.*\\p{L})[\\p{L} -]+")) {
                 return name;
-            }
-
-            System.out.println("The name cannot be empty.");
+            }   //AI fick hjälpa mig med denna...  
+                // (?=.*\\p{L})[\\p{L} -]+ är en regex som kollar om det finns minst en bokstav i strängen och att den endast innehåller bokstäver, mellanslag och bindestreck. 
+            System.out.println("Name must contain letters only. And/or cannot be empty. Please try again.  ");
         }
     }
+
+    /**
+     * Closes the scanner.
+     * @return closes the scanner to free up resources. After calling this method, the scanner should not be used again.
+     */
+    public void scannerClose() {
+            scanner.close();
+        }
+
+        
+
 }
+
+// För metoden för inmatning av enbart bokstäveer kan man även göra som nedan, som faktiskt ger någon mening...
+
+                            // boolean valid = true;
+                            // boolean hasLetter = false;
+
+                            // for (int i = 0; i < name.length(); i++) {
+                            //     char character = name.charAt(i);
+
+                            //     if (Character.isLetter(character)) {
+                            //         hasLetter = true;
+                            //     } else if (character != ' ' && character != '-') {
+                            //         valid = false;
+                            //         break;
+                            //     }
+                            // }
+
+                            // if (valid && hasLetter) {
+                            //     return name;
+                            // 
