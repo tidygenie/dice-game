@@ -6,12 +6,12 @@ public class GameStart {
             int numberOfRounds, int score) {
 
         while (roundsPlayed <= numberOfRounds) {
-            System.out.println(
-                    "\nRound: " + roundsPlayed + " of " + numberOfRounds + " " + player.getName() + " score: "
-                            + player.getScore());
 
-            System.out.println(TerminalColors.BLUE + "\nRound: " + roundsPlayed + " of " + numberOfRounds + " | "
-                    + player.getName() + "'s score: " + player.getScore() + TerminalColors.RESET);
+            System.out.println(TerminalColors.BLUE + "\n"
+                    + player.getName() + "'s score: " + player.getScore()
+                    + " | Round: " + roundsPlayed + " of " + numberOfRounds
+                    + TerminalColors.RESET);
+
             int guess = playerInput.readIntInRange(
                     TerminalColors.YELLOW + "Guess a number between 1 and " + die.getNumberOfSides() + ": "
                             + TerminalColors.RESET,
