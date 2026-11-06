@@ -73,6 +73,7 @@ public class PlayerInput {
                             + TerminalColors.RESET);
         }
     }
+    
 
     /**
      * Closes the scanner.
