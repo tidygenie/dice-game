@@ -22,10 +22,10 @@ public class DiceGame {
                             + numberOfSides + " sided die.");
 
             int roundsPlayed = 1;
-            GameStart.playRound(diceGame.scanner, player, roundsPlayed, die.getDie(), numberOfRounds);
 
-            GameStart.endRound(player.getScore(), numberOfRounds, diceGame.scanner.readLine());
+            GameStart.playRound(diceGame.getPlayerInput(), player, roundsPlayed, die, numberOfRounds, player.getScore());
 
+            
         }
     }
 }
