@@ -35,14 +35,11 @@ public class GameStart {
                 + numberOfRounds + " rounds." + TerminalColors.RESET);
 
         System.out.print("Do you want to play again? (yes/no): ");
-            String answer = playerInput.readLine();
+        String answer = playerInput.readLine();
         if (!answer.equals("yes") && !answer.equals("y")) {
-            System.out.println("Thank you for playing! Goodbye!");
-            playerInput.scannerClose();
-        System.out.print(TerminalColors.YELLOW + "Do you want to play again? (yes/no): " + TerminalColors.RESET);
-
-        if (!playerInput.equals("yes") && !playerInput.equals("y")) {
             System.out.println(TerminalColors.GREEN + "Thank you for playing! Goodbye!" + TerminalColors.RESET);
+            playerInput.scannerClose();
+            System.out.print(TerminalColors.YELLOW + "Do you want to play again? (yes/no): " + TerminalColors.RESET);
         }
     }
 }
