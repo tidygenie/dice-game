@@ -1,10 +1,13 @@
+import Helper.TerminalColors;
+
 public class DiceGame {
     private final PlayerInput scanner = new PlayerInput();
 
     public static void main(String[] args) {
         DiceGame diceGame = new DiceGame();
 
-        System.out.println("Hello, welcome to dice game!");
+        System.out.println(TerminalColors.CYAN + "\n================ welcome to dice game! ================"
+                + TerminalColors.RESET);
 
         while (true) {
             int numberOfRounds = diceGame.scanner.readIntInRange("How many rounds do you want to play? ", 1,
@@ -17,9 +20,8 @@ public class DiceGame {
             Die die = new Die(numberOfSides);
 
             // Info message to user
-            System.out
-                    .println("\nHi, " + player.getName() + " You are playing " + numberOfRounds + " rounds" + " with a "
-                            + numberOfSides + " sided die.");
+            System.out.println(TerminalColors.BLUE + "\nHi, " + player.getName() + "! You are playing " + numberOfRounds
+                    + " rounds with a " + numberOfSides + " sided die." + TerminalColors.RESET);
 
             int roundsPlayed = 1;
             GameStart.playRound(diceGame.scanner, player, roundsPlayed, die.getDie(), numberOfRounds);

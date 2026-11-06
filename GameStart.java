@@ -1,24 +1,27 @@
+import Helper.TerminalColors;
+
 public class GameStart {
 
     public static void playRound(PlayerInput input, Player player, int roundsPlayed, Die die, int numberOfRounds) {
 
         while (roundsPlayed <= numberOfRounds) {
-            System.out.println(
-                    "\nRound: " + roundsPlayed + " av " + numberOfRounds + " " + player.getName() + " score: "
-                            + player.getScore());
-            int guess = input.readIntInRange("Guess a number between 1 and " + die.getNumberOfSides() + ": ", 1,
-                    die.getNumberOfSides());
+            System.out.println(TerminalColors.BLUE + "\nRound: " + roundsPlayed + " of " + numberOfRounds + " | "
+                    + player.getName() + "'s score: " + player.getScore() + TerminalColors.RESET);
+            int guess = input.readIntInRange(
+                    TerminalColors.YELLOW + "Guess a number between 1 and " + die.getNumberOfSides() + ": "
+                            + TerminalColors.RESET,
+                    1, die.getNumberOfSides());
 
             die.roll();
 
             int diceValue = die.getCurrentValue();
-            System.out.println("\nThe dice landed on: " + diceValue);
+            System.out.println(TerminalColors.CYAN + "\nThe dice landed on: " + diceValue + TerminalColors.RESET);
 
             if (guess == diceValue) {
-                System.out.println("You guessed correctly!");
+                System.out.println(TerminalColors.GREEN + "You guessed correctly!" + TerminalColors.RESET);
                 player.increaseScore();
             } else {
-                System.out.println("You guessed incorrectly!");
+                System.out.println(TerminalColors.RED + "You guessed incorrectly!" + TerminalColors.RESET);
             }
 
             roundsPlayed++;
@@ -28,13 +31,13 @@ public class GameStart {
     // TODO: Do you want to play again? (yes/no): dyker inte upp efter alla omgågnar
     public static void endRound(int score, int numberOfRounds, String playerInput) {
 
-        System.out.println(
-                "\nGame over! Your final score is: " + score + " out of " + numberOfRounds + " rounds.");
+        System.out.println(TerminalColors.BLUE + "\nGame over! Your final score is: " + score + " out of "
+                + numberOfRounds + " rounds." + TerminalColors.RESET);
 
-        System.out.print("Do you want to play again? (yes/no): ");
+        System.out.print(TerminalColors.YELLOW + "Do you want to play again? (yes/no): " + TerminalColors.RESET);
 
         if (!playerInput.equals("yes") && !playerInput.equals("y")) {
-            System.out.println("Thank you for playing! Goodbye!");
+            System.out.println(TerminalColors.GREEN + "Thank you for playing! Goodbye!" + TerminalColors.RESET);
         }
     }
 }
