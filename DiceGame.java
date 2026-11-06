@@ -10,8 +10,9 @@ public class DiceGame {
         DiceGame diceGame = new DiceGame();
 
         System.out.println("Hello, welcome to dice game!");
+        boolean playAgain = true;
 
-        while (true) {
+        while (playAgain) {
             int numberOfRounds = diceGame.scanner.readIntInRange("How many rounds do you want to play? ", 1,
                     Integer.MAX_VALUE);
             int numberOfSides = diceGame.scanner.readIntInRange("How many sides should the die have? ", 1,
@@ -28,7 +29,7 @@ public class DiceGame {
 
             int roundsPlayed = 1;
 
-            GameStart.playRound(diceGame.getPlayerInput(), player, roundsPlayed, die, numberOfRounds, player.getScore());
+            playAgain = GameStart.playRound(diceGame.getPlayerInput(), player, roundsPlayed, die, numberOfRounds, player.getScore());
 
             
         }

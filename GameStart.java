@@ -1,6 +1,6 @@
 public class GameStart {
 
-    public static void playRound(PlayerInput playerInput, Player player, int roundsPlayed, Die die, int numberOfRounds, int score) {
+    public static boolean playRound(PlayerInput playerInput, Player player, int roundsPlayed, Die die, int numberOfRounds, int score) {
 
         while (roundsPlayed <= numberOfRounds) {
             System.out.println(
@@ -22,17 +22,20 @@ public class GameStart {
             }
             roundsPlayed++;
 
+        }
+
             System.out.println(
-                "\nGame over! Your final score is: " + score + " out of " + numberOfRounds + " rounds.");
+                "\nGame over! Your final score is: " + player.getScore() + " points out of " + numberOfRounds + " rounds.");
 
             System.out.print("Do you want to play again? (yes/no): ");
+            String roundAnswer = playerInput.readLine();
 
-            if (!playerInput.equals("yes") && !playerInput.equals("y")) {
-            System.out.println("Thank you for playing! Goodbye!");
+            if (roundAnswer.equals("yes") || roundAnswer.equals("y")) {
+                return true;
+            } else {
+                System.out.println("Thank you for playing! Goodbye!");
+                return false;
             }
-
-
-        }
     }
 
 }
