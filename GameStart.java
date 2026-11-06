@@ -4,7 +4,7 @@ public class GameStart {
 
         while (roundsPlayed <= numberOfRounds) {
             System.out.println(
-                    "\nRound: " + roundsPlayed + " av " + numberOfRounds + " " + player.getName() + " score: "
+                    "\nRound: " + roundsPlayed + " of " + numberOfRounds + " " + player.getName() + " score: "
                             + player.getScore());
             int guess = playerInput.readIntInRange("Guess a number between 1 and " + die.getNumberOfSides() + ": ", 1,
                     die.getNumberOfSides());

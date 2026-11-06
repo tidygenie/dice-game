@@ -1,5 +1,10 @@
 public class DiceGame {
-    private final PlayerInput scanner = new PlayerInput();
+    
+    private final PlayerInput scanner = new PlayerInput();  
+
+    public PlayerInput getPlayerInput() {
+        return scanner;
+    }
 
     public static void main(String[] args) {
         DiceGame diceGame = new DiceGame();
