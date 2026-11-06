@@ -1,16 +1,10 @@
-import java.util.Scanner;
-
 public class DiceGame {
-    // private final Scanner scanner;
-    private final Scanner scanner = new Scanner(System.in);
+    private final PlayerInput playerInput = new PlayerInput();
 
     public static void main(String[] args) {
         DiceGame diceGame = new DiceGame();
 
-        // // Die die = new Die();
-        // Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, welcome to dice game!");
-        // boolean playAgain = true;
 
         while (true) {
 
@@ -21,26 +15,51 @@ public class DiceGame {
             var playerName = diceGame.readName();
             Player player = new Player(playerName);
             Die die = new Die(numberOfSides);
-            
+
             int roundsPlayed = 1;
 
             GameStart.playRound(diceGame.scanner, player, roundsPlayed, die.getDie(), numberOfRounds);
 
-            System.out.println("\nGame over! Your final score is: " + player.getScore() + " out of " + numberOfRounds + " rounds.");
+            System.out.println("\nGame over! Your final score is: " + player.getScore() + " out of " + numberOfRounds
+                    + " rounds.");
             System.out.print("Do you want to play again? (yes/no): ");
-            String playAgainInput = diceGame.scanner.next().trim().toLowerCase();   
+            String playAgainInput = diceGame.scanner.next().trim().toLowerCase();
             if (!playAgainInput.equals("yes")) {
                 System.out.println("Thank you for playing! Goodbye!");
                 break;
+
+                // Create dice
+                player.addDie(numberOfSides);
+                Die die = player.getDie();
+
+                System.out.println("Hi " + playerName + "! You will play " + numberOfRounds
+                        + " rounds with a " + numberOfSides + "-sided die.");
+
+                int roundsPlayed = 1;
+
+                while (roundsPlayed <= numberOfRounds) {
+                    System.out.println("\nRound: " + roundsPlayed + " Player score: " + player.getScore());
+                    int guess = diceGame.readIntInRange(
+                            "Guess a number between 1 and " + numberOfSides + ": ", 1, numberOfSides);
+
+                    die.rollDie();
+
+                    int diceValue = die.getCurrentValue();
+                    System.out.println("The dice landed on: " + diceValue);
+
+                    if (guess == diceValue) {
+
+                        System.out.println("Correct!");
+                        player.increaseScore();
+
+                    } else {
+                        System.out.println("Incorrect!");
+                    }
+                    roundsPlayed++;
+                }
+
             }
-           
         }
-
-        // int numberOfRounds = readIntInRange("How many rounds do you want to play?",
-        // 1, Integer.MAX_VALUE);
-        // int numberOfSides = readIntInRange("How many sides should the die have?", 1,
-        // Integer.MAX_VALUE);
-
     }
 
     /**
@@ -55,8 +74,7 @@ public class DiceGame {
         while (true) {
 
             System.out.print(prompt);
-
-            String input = scanner.next();
+            String input = playerInput.readString();
 
             try {
                 int value = Integer.parseInt(input);
@@ -78,32 +96,14 @@ public class DiceGame {
     private String readName() {
         while (true) {
             System.out.print("What is your name? ");
-            String name = scanner.next();
+            String name = playerInput.readString();
 
             if (name.isEmpty()) {
                 System.out.println("The name cannot be empty.");
+                continue;
             }
 
             return name;
         }
     }
-
-    // public void placeYourGuess(String prompt) { // Osäker på hur jag får in de
-    // bestämda antal sidorna i metoden. :-)
-    // System.out.print(prompt);
-    // int guess = scanner.nextInt();
-
-    // if (guess == die.getValue()) {
-    // System.out.println("Congratulations! You guessed the correct number!");
-    // System.out.println("Your score is: " + player.getScore() + " and you have "
-    // + (numberOfRounds - roundsPlayed) + " rounds left.");
-    // } else {
-    // System.out.println("Sorry, your guess was incorrect. The correct number was:
-    // " + die.getValue());
-    // }
-
-    // }
-
-    // En metod för att läsa användarens namn.
-
 }
