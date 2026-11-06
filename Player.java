@@ -38,4 +38,8 @@ public class Player {
         die = new Die(numberOfSides);
     }
 
+    public void roll() {
+        die.rollDie();
+    }
+
 }

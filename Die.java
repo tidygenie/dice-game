@@ -4,12 +4,16 @@ public class Die {
     private int currentValue;
     private final int numberOfSides;
     private final Random random;
+    
 
     Die(int numberOfSides) {
         this.numberOfSides = numberOfSides;
         this.random = new Random();
     }
 
+    public Die getDie() {
+        return this;
+    }
     /**
      * Collects the current value of the die.
      * 
@@ -34,4 +38,6 @@ public class Die {
     public void rollDie() {
         currentValue = random.nextInt(numberOfSides) + 1;
     }
+
+     
 }
