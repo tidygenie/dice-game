@@ -1,3 +1,5 @@
+import Helper.TerminalColors;
+
 import java.util.Scanner;
 
 public class PlayerInput {
@@ -32,7 +34,7 @@ public class PlayerInput {
      */
     public int readIntInRange(String prompt, int minimum, int maximum) {
         while (true) {
-            System.out.print(prompt);
+            System.out.print(TerminalColors.YELLOW + prompt + TerminalColors.RESET);
 
             try {
                 int value = readInt();
@@ -43,7 +45,8 @@ public class PlayerInput {
                 // Ask again when the input is not an integer.
             }
 
-            System.out.println("\nInvalid input. Enter an integer between " + minimum + " and " + maximum + ".");
+            System.out.println(TerminalColors.RED + "\nInvalid input. Enter an integer between " + minimum + " and "
+                    + maximum + "." + TerminalColors.RESET);
         }
     }
 
@@ -55,16 +58,51 @@ public class PlayerInput {
      */
     public String readName(String prompt) {
         while (true) {
-            System.out.print(prompt);
+            System.out.print(TerminalColors.YELLOW + prompt + TerminalColors.RESET);
             String name = readLine();
 
-            if (!name.isEmpty()) {
+            // TODO: Finns det andra sätt?
+            if (name.matches("(?=.*\\p{L})[\\p{L} -]+")) {
                 return name;
-            }
-
-            System.out.println("The name cannot be empty.");
+            } // AI fick hjälpa mig med denna...
+              // (?=.*\\p{L})[\\p{L} -]+ är en regex som kollar om det finns minst en bokstav
+              // i strängen och att den endast innehåller bokstäver, mellanslag och
+              // bindestreck.
+            System.out.println(
+                    TerminalColors.RED + "Name must contain letters only. And/or cannot be empty. Please try again."
+                            + TerminalColors.RESET);
         }
     }
     
 
+    /**
+     * Closes the scanner.
+     * 
+     * @return closes the scanner to free up resources. After calling this method,
+     *         the scanner should not be used again.
+     */
+    public void scannerClose() {
+        scanner.close();
+    }
+
 }
+// För metoden för inmatning av enbart bokstäveer kan man även göra som nedan,
+// som faktiskt ger någon mening...
+
+// boolean valid = true;
+// boolean hasLetter = false;
+
+// for (int i = 0; i < name.length(); i++) {
+// char character = name.charAt(i);
+
+// if (Character.isLetter(character)) {
+// hasLetter = true;
+// } else if (character != ' ' && character != '-') {
+// valid = false;
+// break;
+// }
+// }
+
+// if (valid && hasLetter) {
+// return name;
+//

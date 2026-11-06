@@ -1,17 +1,33 @@
 import java.util.Random;
 
+/**
+ * Represents a die that can be rolled to get a random value.
+ */
 public class Die {
+    /**
+     * The value from the most recent roll.
+     */
     private int currentValue;
-    private final int numberOfSides;
-    private final Random random;
 
-    Die(int numberOfSides) {
+    /**
+     * The number of sides on the die.
+     */
+    private final int numberOfSides;
+
+    /**
+     * Generates random values when the die is rolled.
+     */
+    private final Random random;
+    
+
+    /**
+     * Creates a die with the specified number of sides.
+     *
+     * @param numberOfSides the number of sides on the die
+     */
+    public Die(int numberOfSides) {
         this.numberOfSides = numberOfSides;
         this.random = new Random();
-    }
-
-    public Die getDie() {
-        return this;
     }
 
     /**
@@ -33,11 +49,11 @@ public class Die {
     }
 
     /**
-     * Sets a new value for currentValue between 1 and the number of sides via
-     * rolling the die.
+     * Rolls the die and stores a random value between 1 and the number of sides.
      */
     public void roll() {
         currentValue = random.nextInt(numberOfSides) + 1;
     }
 
+     
 }
