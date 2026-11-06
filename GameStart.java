@@ -29,15 +29,17 @@ public class GameStart {
     }
 
     // TODO: Do you want to play again? (yes/no): dyker inte upp efter alla omgågnar
-    public static void endRound(int score, int numberOfRounds, String playerInput) {
+    public static void endRound(int score, int numberOfRounds, PlayerInput playerInput) {
 
         System.out.println(TerminalColors.BLUE + "\nGame over! Your final score is: " + score + " out of "
                 + numberOfRounds + " rounds." + TerminalColors.RESET);
 
-        System.out.print(TerminalColors.YELLOW + "Do you want to play again? (yes/no): " + TerminalColors.RESET);
-
-        if (!playerInput.equals("yes") && !playerInput.equals("y")) {
+        System.out.print("Do you want to play again? (yes/no): ");
+        String answer = playerInput.readLine();
+        if (!answer.equals("yes") && !answer.equals("y")) {
             System.out.println(TerminalColors.GREEN + "Thank you for playing! Goodbye!" + TerminalColors.RESET);
+            playerInput.scannerClose();
+            System.out.print(TerminalColors.YELLOW + "Do you want to play again? (yes/no): " + TerminalColors.RESET);
         }
     }
 }

@@ -34,7 +34,7 @@ public class DiceGame {
                         int roundsPlayed = 1;
                         GameStart.playRound(diceGame.scanner, player, roundsPlayed, die, numberOfRounds);
 
-                        GameStart.endRound(player.getScore(), numberOfRounds, diceGame.scanner.readLine());
+                        GameStart.endRound(player.getScore(), numberOfRounds, diceGame.scanner);
 
                 }
         }
