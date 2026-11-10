@@ -9,9 +9,9 @@ public class GameStart {
      * Plays the requested number of rounds, displays the final score, and asks
      * whether the player wants to play again.
      *
-     * @param playerInput helper used to read the player's responses
-     * @param player      player whose score is updated during the game
-     * @param die         die used to determine each round's result
+     * @param playerInput    helper used to read the player's responses
+     * @param player         player whose score is updated during the game
+     * @param die            die used to determine each round's result
      * @param numberOfRounds number of rounds to play
      * @return {@code true} if the player wants to play again; otherwise
      *         {@code false}
@@ -33,8 +33,8 @@ public class GameStart {
     /**
      * Displays the player's score and the current round number.
      *
-     * @param player        player whose score is displayed
-     * @param roundsPlayed  current round number
+     * @param player         player whose score is displayed
+     * @param roundsPlayed   current round number
      * @param numberOfRounds total number of rounds in the game
      */
     private static void showRoundStatus(Player player, int roundsPlayed, int numberOfRounds) {
@@ -82,7 +82,7 @@ public class GameStart {
     /**
      * Displays the player's final score.
      *
-     * @param player        player whose score is displayed
+     * @param player         player whose score is displayed
      * @param numberOfRounds total number of rounds played
      */
     private static void showFinalScore(Player player, int numberOfRounds) {
@@ -98,14 +98,21 @@ public class GameStart {
      * @return {@code true} for "yes" or "y"; otherwise {@code false}
      */
     private static boolean askToPlayAgain(PlayerInput playerInput) {
-        System.out.print("Do you want to play again? (yes/no): ");
-        String roundAnswer = playerInput.readLine();
+        while (true) {
 
-        if (roundAnswer.equals("yes") || roundAnswer.equals("y")) {
-            return true;
+            System.out.print("Do you want to play again? (yes/no): ");
+            String roundAnswer = playerInput.readLine();
+
+            if (roundAnswer.equals("yes") || roundAnswer.equals("y")) {
+                return true;
+            }
+
+            if (roundAnswer.equals("no") || roundAnswer.equals("n")) {
+                System.out.println("Thank you for playing! Goodbye!");
+                return false;
+            }
+
+            System.out.println("Invalid answer. Please enter yes, y, no or n.");
         }
-
-        System.out.println("Thank you for playing! Goodbye!");
-        return false;
     }
 }
