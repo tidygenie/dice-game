@@ -22,7 +22,7 @@ public class GameStart {
         while (roundsPlayed <= numberOfRounds) {
             showRoundStatus(player, roundsPlayed, numberOfRounds);
             int guess = readGuess(playerInput, die);
-            playSingleRound(guess, die, player);
+            aSingleRound(guess, die, player);
             roundsPlayed++;
         }
 
@@ -65,7 +65,7 @@ public class GameStart {
      * @param die    die to roll
      * @param player player whose score may be increased
      */
-    private static void playSingleRound(int guess, Die die, Player player) {
+    private static void aSingleRound(int guess, Die die, Player player) {
         die.roll();
 
         int diceValue = die.getCurrentValue();
@@ -112,7 +112,7 @@ public class GameStart {
                 return false;
             }
 
-            System.out.println("Invalid answer. Please enter yes, y, no or n.");
+            System.out.println(TerminalColors.RED + "Invalid answer. Please enter yes, y, no or n." + TerminalColors.RESET);
         }
     }
 }
