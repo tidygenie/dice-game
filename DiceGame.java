@@ -29,7 +29,7 @@ public class DiceGame {
                 boolean playAgain = true;
 
                 while (playAgain) {
-                        int numberOfRounds = diceGame.scanner.readIntInRange("How many rounds do you want to play? ", 1,
+                        int numberOfRounds = diceGame.scanner.readIntInRange("\nHow many rounds do you want to play? ", 1,
                                         Integer.MAX_VALUE);
                         int numberOfSides = diceGame.scanner.readIntInRange("\nThe die cannot have less than 2 sides. How many sides should the die have? ", 2,
                                         Integer.MAX_VALUE);

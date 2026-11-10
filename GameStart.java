@@ -66,7 +66,7 @@ public class GameStart {
      * @param die    die to roll
      * @param player player whose score may be increased
      */
-    private static void aSingleRound(int guess, Die die, Player player) {
+    private static boolean aSingleRound(int guess, Die die, Player player) {
         die.roll();
 
         int diceValue = die.getCurrentValue();
@@ -78,6 +78,9 @@ public class GameStart {
         } else {
             System.out.println(TerminalColors.RED + "You guessed incorrectly!" + TerminalColors.RESET);
         }
+
+        return checkWinner(player);
+        
     }
 
     /**
