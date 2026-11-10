@@ -26,9 +26,7 @@ public class PlayerInput {
      * @throws NumberFormatException if the entered text is not a valid integer
      */
     public int readInt() {
-        var a = Integer.parseInt(readLine());
-
-        return a;
+        return Integer.parseInt(readLine());
     }
 
     /**
@@ -68,13 +66,10 @@ public class PlayerInput {
             System.out.print(TerminalColors.YELLOW + prompt + TerminalColors.RESET);
             String name = readLine();
 
+            //This regex matches a string made of letters, spaces, and hyphens, as long as it contains at least one letter.
             if (name.matches("(?=.*\\p{L})[\\p{L} -]+")) {
                 return name;
-            } // AI fick hjälpa mig med denna...
-              // (?=.*\\p{L})[\\p{L} -]+ är en regex som kollar om det finns minst en bokstav
-              // i strängen och att den endast innehåller bokstäver, mellanslag och
-              // bindestreck.
-
+            }
             System.out.println(
                     TerminalColors.RED + "Name must contain letters only. And/or cannot be empty. Please try again."
                             + TerminalColors.RESET);
