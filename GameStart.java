@@ -124,7 +124,11 @@ public class GameStart {
         }
     }
 
-    // Added a method to check if the player has won the game by reaching a score of 10 or more.
+    /**
+    *  Added a method to check if the player has won the game by reaching a score of 10 or more.
+    *  @param player the player whose score is checked
+    *  @return true if the player has won, false otherwise
+    */ 
     public static boolean checkWinner(Player player) {
         if (player.getScore() >= 10) {
             System.out.println(TerminalColors.GREEN + "Congratulations, " + player.getName() + "! You won the game with a score of " + player.getScore() + "!" + TerminalColors.RESET);
