@@ -39,10 +39,7 @@ public class DiceGame {
                                                         + " rounds with a " + numberOfSides + " sided die."
                                                         + TerminalColors.RESET);
 
-                        int roundsPlayed = 1;
-
-                        playAgain = GameStart.playRound(diceGame.getPlayerInput(), player, roundsPlayed, die,
-                                        numberOfRounds, player.getScore());
+                        playAgain = GameStart.playRound(diceGame.getPlayerInput(), player, die, numberOfRounds);
 
                 }
         }

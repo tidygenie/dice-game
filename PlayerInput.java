@@ -73,7 +73,6 @@ public class PlayerInput {
                             + TerminalColors.RESET);
         }
     }
-    
 
     /**
      * Closes the scanner.
@@ -86,23 +85,3 @@ public class PlayerInput {
     }
 
 }
-// För metoden för inmatning av enbart bokstäveer kan man även göra som nedan,
-// som faktiskt ger någon mening...
-
-// boolean valid = true;
-// boolean hasLetter = false;
-
-// for (int i = 0; i < name.length(); i++) {
-// char character = name.charAt(i);
-
-// if (Character.isLetter(character)) {
-// hasLetter = true;
-// } else if (character != ' ' && character != '-') {
-// valid = false;
-// break;
-// }
-// }
-
-// if (valid && hasLetter) {
-// return name;
-//
