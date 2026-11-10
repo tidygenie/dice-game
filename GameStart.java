@@ -19,15 +19,19 @@ public class GameStart {
      */
     public static boolean playRound(PlayerInput playerInput, Player player, Die die, int numberOfRounds) {
         int roundsPlayed = 1;
+        boolean winner = false;
 
-        while (roundsPlayed <= numberOfRounds) {
+        while (roundsPlayed <= numberOfRounds && !winner) {
             showRoundStatus(player, roundsPlayed, numberOfRounds);
             int guess = readGuess(playerInput, die);
-            aSingleRound(guess, die, player);
+            winner = aSingleRound(guess, die, player);
             roundsPlayed++;
         }
 
-        showFinalScore(player, numberOfRounds);
+        if (!winner) {
+            showFinalScore(player, numberOfRounds);
+        }
+
         return askToPlayAgain(playerInput);
     }
 
@@ -66,7 +70,7 @@ public class GameStart {
      * @param die    die to roll
      * @param player player whose score may be increased
      */
-    private static void aSingleRound(int guess, Die die, Player player) {
+    private static boolean aSingleRound(int guess, Die die, Player player) {
         die.roll();
 
         int diceValue = die.getCurrentValue();
@@ -78,6 +82,9 @@ public class GameStart {
         } else {
             System.out.println(TerminalColors.RED + "You guessed incorrectly!" + TerminalColors.RESET);
         }
+
+        return checkWinner(player);
+
     }
 
     /**
@@ -115,5 +122,18 @@ public class GameStart {
 
             System.out.println(TerminalColors.RED + "Invalid answer. Please enter yes (y) or no (n)." + TerminalColors.RESET);
         }
+    }
+
+    /**
+    *  Added a method to check if the player has won the game by reaching a score of 10 or more.
+    *  @param player the player whose score is checked
+    *  @return true if the player has won, false otherwise
+    */ 
+    public static boolean checkWinner(Player player) {
+        if (player.getScore() >= 10) {
+            System.out.println(TerminalColors.GREEN + "Congratulations, " + player.getName() + "! You won the game with a score of " + player.getScore() + "!" + TerminalColors.RESET);
+            return true;
+        } 
+        return false;
     }
 }
