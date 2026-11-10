@@ -116,4 +116,15 @@ public class GameStart {
             System.out.println(TerminalColors.RED + "Invalid answer. Please enter yes (y) or no (n)." + TerminalColors.RESET);
         }
     }
+
+    // Added a method to check if the player has won the game by reaching a score of 10 or more.
+    public static boolean checkWinner(Player player) {
+        if (player.getScore() >= 10) {
+            System.out.println(TerminalColors.GREEN + "Congratulations, " + player.getName() + "! You won the game with a score of " + player.getScore() + "!" + TerminalColors.RESET);
+            return true;
+        } 
+        return false;
+    }
+
+
 }
