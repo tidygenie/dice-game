@@ -2,6 +2,7 @@ import Helper.TerminalColors;
 
 /**
  * Runs the rounds of a dice game and handles the replay prompt.
+ * The brain of the game 🧠
  */
 public class GameStart {
 
@@ -112,7 +113,7 @@ public class GameStart {
                 return false;
             }
 
-            System.out.println(TerminalColors.RED + "Invalid answer. Please enter yes, y, no or n." + TerminalColors.RESET);
+            System.out.println(TerminalColors.RED + "Invalid answer. Please enter yes (y) or no (n)." + TerminalColors.RESET);
         }
     }
 }
