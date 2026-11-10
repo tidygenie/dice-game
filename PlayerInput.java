@@ -2,8 +2,12 @@ import Helper.TerminalColors;
 
 import java.util.Scanner;
 
+/**
+ * Reads and validates text entered by the player in the console.
+ */
 public class PlayerInput {
 
+    /** Scanner used to read input from standard input. */
     private final Scanner scanner = new Scanner(System.in);
 
     /**
@@ -18,10 +22,13 @@ public class PlayerInput {
     /**
      * Reads a line of text and converts it to an integer.
      *
-     * @return the integer the user entered.
+     * @return the integer the user entered
+     * @throws NumberFormatException if the entered text is not a valid integer
      */
     public int readInt() {
-        return Integer.parseInt(readLine());
+        var a = Integer.parseInt(readLine());
+
+        return a;
     }
 
     /**
@@ -61,13 +68,13 @@ public class PlayerInput {
             System.out.print(TerminalColors.YELLOW + prompt + TerminalColors.RESET);
             String name = readLine();
 
-            // TODO: Finns det andra sätt?
             if (name.matches("(?=.*\\p{L})[\\p{L} -]+")) {
                 return name;
             } // AI fick hjälpa mig med denna...
               // (?=.*\\p{L})[\\p{L} -]+ är en regex som kollar om det finns minst en bokstav
               // i strängen och att den endast innehåller bokstäver, mellanslag och
               // bindestreck.
+
             System.out.println(
                     TerminalColors.RED + "Name must contain letters only. And/or cannot be empty. Please try again."
                             + TerminalColors.RESET);

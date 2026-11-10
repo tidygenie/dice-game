@@ -18,7 +18,6 @@ public class Die {
      * Generates random values when the die is rolled.
      */
     private final Random random;
-    
 
     /**
      * Creates a die with the specified number of sides.
@@ -54,6 +53,4 @@ public class Die {
     public void roll() {
         currentValue = random.nextInt(numberOfSides) + 1;
     }
-
-     
 }
