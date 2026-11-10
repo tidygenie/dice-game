@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class PlayerInput {
 
     /** Scanner used to read input from standard input. */
-    private final Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in, "UTF-8");
 
     /**
      * Reads one whole line of text from the user.
@@ -76,10 +76,6 @@ public class PlayerInput {
         }
     }
 
-    /**
-     * Closes the scanner. Closes the scanner to free up resources. After calling
-     * this method,the scanner should not be used again.
-     */
     public void scannerClose() {
         scanner.close();
     }
