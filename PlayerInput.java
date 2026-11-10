@@ -82,10 +82,8 @@ public class PlayerInput {
     }
 
     /**
-     * Closes the scanner.
-     * 
-     * @return closes the scanner to free up resources. After calling this method,
-     *         the scanner should not be used again.
+     * Closes the scanner. Closes the scanner to free up resources. After calling
+     * this method,the scanner should not be used again.
      */
     public void scannerClose() {
         scanner.close();

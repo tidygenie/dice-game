@@ -55,6 +55,7 @@ public class DiceGame {
                         playAgain = GameStart.playRound(diceGame.getPlayerInput(), player, die, numberOfRounds);
 
                 }
+                diceGame.getPlayerInput().scannerClose();
         }
 
         private static void welcomeHeading() {
