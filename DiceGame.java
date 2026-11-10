@@ -29,11 +29,11 @@ public class DiceGame {
                 boolean playAgain = true;
 
                 while (playAgain) {
-                        int numberOfRounds = diceGame.scanner.readIntInRange("How many rounds do you want to play? ", 2,
+                        int numberOfRounds = diceGame.scanner.readIntInRange("How many rounds do you want to play? ", 1,
                                         Integer.MAX_VALUE);
-                        int numberOfSides = diceGame.scanner.readIntInRange("How many sides should the die have? ", 2,
+                        int numberOfSides = diceGame.scanner.readIntInRange("\nThe die cannot have less than 2 sides. How many sides should the die have? ", 2,
                                         Integer.MAX_VALUE);
-                        String playerName = diceGame.scanner.readName("What is your name? ");
+                        String playerName = diceGame.scanner.readName("\nWhat is your name? ");
 
                         // Create the player and die using the chosen settings.
                         Player player = new Player(playerName);
