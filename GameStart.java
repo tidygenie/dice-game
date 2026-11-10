@@ -19,15 +19,19 @@ public class GameStart {
      */
     public static boolean playRound(PlayerInput playerInput, Player player, Die die, int numberOfRounds) {
         int roundsPlayed = 1;
+        boolean winner = false;
 
-        while (roundsPlayed <= numberOfRounds) {
+        while (roundsPlayed <= numberOfRounds && !winner) {
             showRoundStatus(player, roundsPlayed, numberOfRounds);
             int guess = readGuess(playerInput, die);
-            aSingleRound(guess, die, player);
+            winner = aSingleRound(guess, die, player);
             roundsPlayed++;
         }
 
-        showFinalScore(player, numberOfRounds);
+        if (!winner) {
+            showFinalScore(player, numberOfRounds);
+        }
+
         return askToPlayAgain(playerInput);
     }
 
@@ -80,7 +84,7 @@ public class GameStart {
         }
 
         return checkWinner(player);
-        
+
     }
 
     /**
