@@ -1,0 +1,17 @@
+# Java build output
+*.class
+bin/
+out/
+target/
+build/
+.gradle/
+
+# IDE metadata
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# JVM crash logs
+hs_err_pid*
