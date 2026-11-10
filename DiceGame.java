@@ -9,24 +9,31 @@ public class DiceGame {
         /** Reads and validates input entered by the player. */
         private final PlayerInput scanner = new PlayerInput();
 
+        /**
+         * Returns the input helper used by this game.
+         *
+         * @return this game's player input helper
+         */
         public PlayerInput getPlayerInput() {
                 return scanner;
         }
 
+        /**
+         * Starts the game and repeats it while the player chooses to play again.
+         */
         public static void main(String[] args) {
                 DiceGame diceGame = new DiceGame();
 
-                System.out.println(TerminalColors.CYAN
-                                + "\n================ welcome to dice game! ================"
-                                + TerminalColors.RESET);
+                welcomeHeading();
+
                 boolean playAgain = true;
 
                 while (playAgain) {
                         int numberOfRounds = diceGame.scanner.readIntInRange("How many rounds do you want to play? ", 1,
                                         Integer.MAX_VALUE);
-                        int numberOfSides = diceGame.scanner.readIntInRange("How many sides should the die have? ", 1,
+                        int numberOfSides = diceGame.scanner.readIntInRange("\nThe die cannot have less than 2 sides. How many sides should the die have? ", 2,
                                         Integer.MAX_VALUE);
-                        String playerName = diceGame.scanner.readName("What is your name? ");
+                        String playerName = diceGame.scanner.readName("\nWhat is your name? ");
 
                         // Create the player and die using the chosen settings.
                         Player player = new Player(playerName);
@@ -39,11 +46,15 @@ public class DiceGame {
                                                         + " rounds with a " + numberOfSides + " sided die."
                                                         + TerminalColors.RESET);
 
-                        int roundsPlayed = 1;
-
-                        playAgain = GameStart.playRound(diceGame.getPlayerInput(), player, roundsPlayed, die,
-                                        numberOfRounds, player.getScore());
+                        playAgain = GameStart.playRound(diceGame.getPlayerInput(), player, die, numberOfRounds);
 
                 }
+                diceGame.getPlayerInput().scannerClose();
+        }
+
+        private static void welcomeHeading() {
+                System.out.println(TerminalColors.CYAN
+                                + "\n================ welcome to dice game! ================"
+                                + TerminalColors.RESET);
         }
 }
