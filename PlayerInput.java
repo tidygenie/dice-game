@@ -90,5 +90,4 @@ public class PlayerInput {
     public void scannerClose() {
         scanner.close();
     }
-
 }
