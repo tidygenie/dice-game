@@ -6,23 +6,35 @@ Här dokumenteras manuella testfall för spelet. Testfallen beskriver vad som sk
 
 Sätt status till **Godkänd** eller **Underkänd** efter att testet har körts. Skriv gärna det faktiska resultatet eller en avvikelse i kommentarskolumnen. Lämna status som **Ej körd** tills testet faktiskt har genomförts.
 
-| ID   | Funktion                                   | Steg och indata                                                                                                            | Förväntat resultat                                                                                                                            | Status  | Kommentar                                                              |
-| ---- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------- |
-| T-01 | Starta ett spel                            | Starta spelet. Ange `1` runda, `2` sidor och ett giltigt namn.                                                             | Spelet visar sammanfattningen och ber om en gissning mellan 1 och 2.                                                                          | Godkänd |                                                                        |
-| T-02 | Ogiltigt antal rundor: text                | Vid frågan om antal rundor, ange `abc`, följt av `1`.                                                                      | Texten avvisas, spelet ber om ett giltigt heltal och accepterar därefter `1`.                                                                 | Godkänd |                                                                        |
-| T-03 | Ogiltigt antal rundor: noll eller negativt | Ange `0` eller ett negativt tal som antal rundor, följt av `1`.                                                            | Värdet avvisas eftersom minst en runda krävs.                                                                                                 | Godkänd |                                                                        |
-| T-04 | Ogiltigt antal sidor                       | Ange `abc` eller `1` som antal sidor, följt av `2`.                                                                        | Ogiltiga värden avvisas. Spelet accepterar `2` eller ett större heltal.                                                                       | Godkänd |                                                                        |
-| T-05 | Tomt namn                                  | Tryck enter utan att skriva ett namn. Agne sedan ett giltig namn.                                                          | Det tomma namnet avvisas och spelet frågar efter namnet igen.                                                                                 | Godkänd |                                                                        |
-| T-06 | Ogiltiga tecken i namn                     | Ange ett namn med enbart siffror eller symboler, till exempel `123`. Ange sedan ett giltigt namn.                          | Namnet med ogiltiga tecken avvisas. Namnet ska innehålla bokstäver; mellanslag och bindestreck är tillåtna.                                   | Godkänd |                                                                        |
-| T-07 | Giltigt namn                               | Ange ett namn med bokstäver, exempelvis `Anna`, `Pelle-Maria` eller `Åsa`.                                                 | Namnet accepteras och visas i spelet. Observera att inmatningen görs om till gemener.                                                         | Godkänd |                                                                        |
-| T-08 | Gissning är inte ett heltal                | Vid gissningen, ange `abc` och därefter ett giltigt heltal.                                                                | Texten avvisas och spelet ber om en ny gissning utan att gå vidare till nästa runda.                                                          | Godkänd |                                                                        |
-| T-09 | Gissning utanför intervallet               | Med en tärning på 2 sidor, ange `0` eller `3`, följt av `1` eller `2`.                                                     | Värdet avvisas. Endast heltal från 1 till antal sidor accepteras.                                                                             | Godkänd |                                                                        |
-| T-10 | Rätt och fel gissning påverkar poängen     | Spela flera rundor med en tärning på 2 sidor och gissa `1` varje gång. Jämför varje gissning med tärningsvärdet som visas. | Poängen ökar med 1 vid rätt gissning och är oförändrad vid fel gissning. Testet beror på slumpen; upprepa vid behov för att se båda utfallen. | Godkänd | Slumpberoende                                                          |
-| T-11 | Begränsat antal rundor                     | Starta ett spel med 1 runda och se till att spelaren inte når 10 poäng.                                                    | Spelet avslutas efter rundan och visar slutpoängen.                                                                                           | Godkänd | Slumpberoende endast om utfallet behöver bli en felaktig gissning      |
-| T-12 | Vinst vid 10 poäng                         | Spela med minst 10 rundor och nå 10 poäng.                                                                                 | Spelet visar vinnarmeddelandet och avslutar rundorna.                                                                                         | Godkänd | Svårt att reproducera manuellt eftersom tärningsvärdet är slumpmässigt |
-| T-13 | Ogiltigt svar på spela igen frågan         | När spelet frågar om en ny omgång, ange exempelvis `kanske`. Ange därefter `no`.                                           | Det ogiltiga svaret avvisas och frågan ställs igen. `no` avslutar spelet.                                                                     | Godkänd |                                                                        |
-| T-14 | Spela igen                                 | Svara `yes` eller `y` på spela-igen-frågan och starta ett nytt spel.                                                       | Spelet frågar efter inställningar för en ny omgång. Den nya spelarens poäng börjar på 0.                                                      | Godkänd |                                                                        |
-| T-15 | Avsluta efter spelet                       | Svara `no` eller `n` på spela-igen-frågan.                                                                                 | Spelet tackar spelaren och avslutas.                                                                                                          | Godkänd |                                                                        |
+### Spelstart och inmatning
+
+| ID   | Testfall                     | Indata                            | Förväntat resultat                                        | Status |
+| ---- | ---------------------------- | --------------------------------- | --------------------------------------------------------- | ------ |
+| T-01 | Starta spel                  | 1 runda, 2 sidor, giltigt namn    | Sammanfattning visas och spelaren ombeds gissa mellan 1–2 | ✅     |
+| T-02 | Ogiltigt antal rundor (text) | `abc`, sedan `1`                  | Text avvisas och nytt värde efterfrågas                   | ✅     |
+| T-03 | Ogiltigt antal rundor (≤0)   | `0` eller negativt tal, sedan `1` | Värdet avvisas                                            | ✅     |
+| T-04 | Ogiltigt antal sidor         | `abc` eller `1`, sedan `2`        | Ogiltigt värde avvisas                                    | ✅     |
+| T-05 | Tomt namn                    | Tom inmatning, sedan giltigt namn | Tomt namn avvisas                                         | ✅     |
+| T-06 | Namn med ogiltiga tecken     | `123`, sedan giltigt namn         | Namnet avvisas                                            | ✅     |
+| T-07 | Giltigt namn                 | `Anna`, `Åsa`, `Pelle-Maria`      | Namnet accepteras                                         | ✅     |
+
+### Gissningar
+
+| ID   | Testfall                     | Indata                   | Förväntat resultat                  | Status |
+| ---- | ---------------------------- | ------------------------ | ----------------------------------- | ------ |
+| T-08 | Gissning inte heltal         | `abc`, sedan giltigt tal | Ny gissning efterfrågas             | ✅     |
+| T-09 | Gissning utanför intervallet | `0` eller för högt tal   | Värdet avvisas                      | ✅     |
+| T-10 | Rätt/fel gissning            | Spela flera rundor       | Poäng ökar endast vid rätt gissning | ✅     |
+
+### Spelflöde
+
+| ID   | Testfall                      | Indata               | Förväntat resultat           | Status |
+| ---- | ----------------------------- | -------------------- | ---------------------------- | ------ |
+| T-11 | Begränsat antal rundor        | 1 runda              | Spelet avslutas efter rundan | ✅     |
+| T-12 | Vinst vid 10 poäng            | Nå 10 poäng          | Vinnarmeddelande visas       | ✅     |
+| T-13 | Ogiltigt svar på "Spela igen" | `kanske`, sedan `no` | Frågan ställs på nytt        | ✅     |
+| T-14 | Spela igen                    | `yes` eller `y`      | Ny spelomgång startar        | ✅     |
+| T-15 | Avsluta spelet                | `no` eller `n`       | Spelet avslutas              | ✅     |
 
 ## Begränsningar
 
